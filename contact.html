@@ -36,38 +36,28 @@
         </div>
     </section>
 
-    <!-- ===== CONTACT SECTION ===== -->
-    <section class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Fill out the form below and we’ll get back to you soon.</p>
+    ...
+<!-- Contact Section -->
+<form id="contact-form" class="contact-form">
+  <div class="form-group">
+    <input type="text" id="name" placeholder="Your Name" required>
+  </div>
 
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
-                </div>
+  <div class="form-group">
+    <input type="email" id="email" placeholder="Your Email" required>
+  </div>
 
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
-                </div>
+  <div class="form-group">
+    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+  </div>
 
-                <div class="form-group">
-                    <textarea rows="5" placeholder="Your Message" required></textarea>
-                </div>
+  <button type="submit" class="btn">Send Message</button>
+</form>
 
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+<!-- EmailJS SDK (MUST come first) -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 Dynamic codes. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="assets/js/script.js"></script>
+<!-- Your JS file -->
+<script src="assets/js/script.js"></script>
 </body>
 </html>
