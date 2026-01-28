@@ -1,7 +1,13 @@
 const revealElements = document.querySelectorAll(
     ".services, .values, .portfolio-item"
 );
-
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+    });
+});
 // EmailJS init
 alert("script.js loaded");
 
