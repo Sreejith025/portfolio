@@ -1,3 +1,7 @@
+const revealElements = document.querySelectorAll(
+    ".services, .values, .portfolio-item"
+);
+
 // EmailJS init
 alert("script.js loaded");
 
