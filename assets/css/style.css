@@ -152,17 +152,27 @@ a {
 }
 
 .service-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
 .service {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #234892;
+
+  box-shadow: 0 15px 30px rgba(188, 14, 14, 0.15);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.service:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+}
+
 
 .service h3 {
     margin-bottom: 10px;
@@ -183,8 +193,15 @@ a {
 
 .value {
     padding: 25px;
-    border: 1px solid #e5e7eb;
+    background: #fff;
     border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(168, 15, 15, 0.15) ;
+    border: 1px solid #234892;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.10);
 }
 
 /* ===== CTA ===== */
