@@ -1,46 +1,56 @@
-import mongoose from "mongoose";
 import nodemailer from "nodemailer";
+import { MongoClient } from "mongodb";
 
-let isConnected = false;
+let cachedClient = null;
 
-// Connect MongoDB
-async function connectDB() {
-  if (isConnected) return;
-  await mongoose.connect(process.env.MONGODB_URI);
-  isConnected = true;
+async function connectToDatabase() {
+  if (cachedClient) return cachedClient;
+
+  const client = new MongoClient(process.env.MONGODB_URI);
+  await client.connect();
+  cachedClient = client;
+  return client;
 }
 
-// Schema
-const ContactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-  createdAt: { type: Date, default: Date.now }
-});
-
-const Contact =
-  mongoose.models.Contact || mongoose.model("Contact", ContactSchema);
-
 export default async function handler(req, res) {
+  // ✅ Allow only POST
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Only POST allowed" });
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
-    await connectDB();
+    // ✅ Manually parse body (Vercel fix)
+    const buffers = [];
+    for await (const chunk of req) {
+      buffers.push(chunk);
+    }
+    const body = JSON.parse(Buffer.concat(buffers).toString());
 
-    const { name, email, message } = req.body;
+    const { name, email, message } = body;
 
-    // OUTLET 1: Save to database
-    await new Contact({ name, email, message }).save();
+    if (!name  !email  !message) {
+      return res.status(400).json({ message: "All fields required" });
+    }
 
-    // OUTLET 2: Email to admin
+    // ✅ MongoDB
+    const client = await connectToDatabase();
+    const db = client.db("portfolio");
+    const collection = db.collection("contacts");
+
+    await collection.insertOne({
+      name,
+      email,
+      message,
+      createdAt: new Date(),
+    });
+
+    // ✅ Email
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
+        pass: process.env.EMAIL_PASS,
+      },
     });
 
     await transporter.sendMail({
@@ -52,17 +62,12 @@ export default async function handler(req, res) {
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
         <p><b>Message:</b> ${message}</p>
-      
+      ,
     });
 
-    return res.status(200).json({
-      message: "Message sent successfully"
-    });
-
+    return res.status(200).json({ message: "Message sent successfully" });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      message: "Server error"
-    });
+    console.error("API ERROR:", error);
+    return res.status(500).json({ message: "Server error" });
   }
 }

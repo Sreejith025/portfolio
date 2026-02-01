@@ -1,24 +1,19 @@
-const revealElements = document.querySelectorAll(
-    ".services, .values, .portfolio-item"
-);
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({ behavior: "smooth" });
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href"))
+        ?.scrollIntoView({ behavior: "smooth" });
     });
-});
-// EmailJS init
-alert("script.js loaded");
+  });
 
-(function () {
-  emailjs.init("I6NisfSnEgvDMw5K5"); // your PUBLIC KEY
-})();
-
-document.addEventListener("DOMContentLoaded", function () {
+  // Contact form handler
   const form = document.getElementById("contact-form");
+  if (!form) return;
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
@@ -26,25 +21,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = document.getElementById("message").value.trim();
 
     if (!name || !email || !message) {
-      alert("Please fill all fields");
+      alert("❌ Please fill all fields");
       return;
     }
 
-    emailjs
-      .send("service_h6c8qgj", "template_mn02898", {
-        name: name,
-        email: email,
-        message: message,
-      })
-      .then(
-        function () {
-          alert("✅ Message sent successfully!");
-          form.reset();
+    try {
+      const response = await fetch("/api/contact.js", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
         },
-        function (error) {
-          console.error("EmailJS Error:", error);
-          alert("❌ Failed to send message. Check console.");
-        }
-      );
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("✅ Message sent successfully!");
+        form.reset();
+      } else {
+        alert("❌ " + (data.message || "Something went wrong"));
+      }
+
+    } catch (error) {
+      console.error("Form Error:", error);
+      alert("❌ Server error. Please try again later.");
+    }
   });
+
 });

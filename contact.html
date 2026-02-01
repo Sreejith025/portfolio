@@ -36,28 +36,42 @@
         </div>
     </section>
 
-    ...
-<!-- Contact Section -->
-<form id="contact-form" class="contact-form">
+   <form id="contact-form" class="contact-form">
+
   <div class="form-group">
-    <input type="text" id="name" placeholder="Your Name" required>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Your Name"
+      required
+    >
   </div>
 
   <div class="form-group">
-    <input type="email" id="email" placeholder="Your Email" required>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Your Email"
+      required
+    >
   </div>
 
   <div class="form-group">
-    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Your Message"
+      required
+    ></textarea>
   </div>
 
   <button type="submit" class="btn">Send Message</button>
+
 </form>
 
-<!-- EmailJS SDK (MUST come first) -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<!-- Your JS file -->
 <script src="assets/js/script.js"></script>
 </body>
 </html>
