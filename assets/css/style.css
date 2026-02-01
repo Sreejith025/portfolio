@@ -526,3 +526,52 @@ a {
 .cta {
     margin-top: 0;
 }
+/* ============================= */
+/* THANK YOU PAGE STYLES */
+/* ============================= */
+
+body.thankyou-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0aa6c7, #1fd1a5);
+}
+
+.thankyou-container {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 14px;
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.thankyou-container h1 {
+  font-size: 32px;
+  color: #0aa6c7;
+  margin-bottom: 15px;
+}
+
+.thankyou-container p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.thankyou-container a {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #0aa6c7;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.thankyou-container a:hover {
+  background: #0889a5;
+}

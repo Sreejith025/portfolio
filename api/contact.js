@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     const { name, email, message } = body;
 
-    if (!name  !email  !message) {
+    if (!name || !email || !message) {
       return res.status(400).json({ message: "All fields required" });
     }
 
@@ -46,12 +46,14 @@ export default async function handler(req, res) {
 
     // ✅ Email
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // MUST be true for port 465
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
     await transporter.sendMail({
       from: "Website Contact" <${process.env.EMAIL_USER}>,
