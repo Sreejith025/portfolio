@@ -1,0 +1,27 @@
+{
+  "name": "business-website",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "mongoose": "^8.0.0",
+    "nodemailer": "^6.9.0"
+  },
+  "description": "Dynamic codes is a clean, modern, and responsive **portfolio & business website**\r built using **HTML, CSS, and JavaScript**.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sreejith025/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sreejith025/portfolio/issues"
+  },
+  "homepage": "https://github.com/Sreejith025/portfolio#readme"
+}
