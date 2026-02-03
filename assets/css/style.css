@@ -227,22 +227,27 @@ a {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .header .container {
-        flex-direction: column;
-    }
+  .header .container {
+    flex-direction: column;
+  }
 
-    .navbar {
-        margin-top: 10px;
-    }
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
 
-    .navbar a {
-        margin: 10px;
-    }
+  .navbar a {
+    margin: 8px 12px;
+    white-space: nowrap;
+  }
 
-    .hero h2 {
-        font-size: 28px;
-    }
+  .hero h2 {
+    font-size: 28px;
+  }
 }
+
 /* ===== FADE IN ANIMATION ===== */
 @keyframes fadeIn {
     from {
