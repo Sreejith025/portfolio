@@ -26,7 +26,7 @@ a {
 
 /* ===== HEADER / NAVBAR ===== */
 .header {
-    background:linear-gradient(to right, #1fd1a5,#0aa6c7);
+    background: #0b7c90;
     padding: 15px 0;
 }
 
@@ -43,7 +43,7 @@ a {
 }
 
 .logo span {
-    color: #0aa6c7;
+    color: #38bdf8;
 }
 
 .navbar a {
@@ -55,12 +55,12 @@ a {
 
 .navbar a:hover,
 .navbar a.active {
-    color: #1fd1a5;
+    color: #38bdf8;
 }
 
 /* ===== HERO SECTION ===== */
 .hero {
-    background: linear-gradient(to right, #1fd1a5, #0aa6c7);
+    background: linear-gradient(to right, #00ffff, #1e293b);
     color: #fff;
     padding: 100px 0;
     text-align: center;
@@ -227,32 +227,22 @@ a {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .header .container {
-    flex-direction: column;
-    align-items: center;
-  }
+    .header .container {
+        flex-direction: column;
+    }
 
-  .navbar {
-    display: flex;
-    flex-direction: row; 
-    justify-content: center;
-    flex-wrap: nowrap;     
-    width: 100%;
-    overflow-x: auto;      
-  }
+    .navbar {
+        margin-top: 10px;
+    }
 
-  .navbar a {
-    margin: 0 8px;
-    font-size: 14px;
-    white-space: nowrap;   
-  }
+    .navbar a {
+        margin: 10px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
 }
-
-  .hero h2 {
-    font-size: 28px;
-  }
-
-
 /* ===== FADE IN ANIMATION ===== */
 @keyframes fadeIn {
     from {
