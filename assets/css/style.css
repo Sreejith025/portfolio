@@ -26,7 +26,7 @@ a {
 
 /* ===== HEADER / NAVBAR ===== */
 .header {
-    background: #0b7c90;
+    background:linear-gradient(to right, #1fd1a5,#0aa6c7);
     padding: 15px 0;
 }
 
@@ -43,7 +43,7 @@ a {
 }
 
 .logo span {
-    color: #38bdf8;
+    color: #0aa6c7;
 }
 
 .navbar a {
@@ -55,12 +55,12 @@ a {
 
 .navbar a:hover,
 .navbar a.active {
-    color: #38bdf8;
+    color: #1fd1a5;
 }
 
 /* ===== HERO SECTION ===== */
 .hero {
-    background: linear-gradient(to right, #00ffff, #1e293b);
+    background: linear-gradient(to right, #1fd1a5, #0aa6c7);
     color: #fff;
     padding: 100px 0;
     text-align: center;
