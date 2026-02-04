@@ -161,7 +161,7 @@ a {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
-  border: 1px solid #1fd1a5;
+  border: 2px solid #1fd1a5;
 
   box-shadow: 0 15px 30px rgba(188, 14, 14, 0.15);
 
@@ -196,7 +196,7 @@ a {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(168, 15, 15, 0.15) ;
-    border: 1px solid #1fd1a5;
+    border: 2px solid #1fd1a5;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .value:hover {
