@@ -26,7 +26,7 @@ a {
 
 /* ===== HEADER / NAVBAR ===== */
 .header {
-    background: #0b7c90;
+    background: linear-gradient(to right,#1fd1a5, #0aa6c7);
     padding: 15px 0;
 }
 
@@ -43,7 +43,7 @@ a {
 }
 
 .logo span {
-    color: #38bdf8;
+    color: #facbd0;
 }
 
 .navbar a {
@@ -55,12 +55,12 @@ a {
 
 .navbar a:hover,
 .navbar a.active {
-    color: #38bdf8;
+    color: #facbd0;
 }
 
 /* ===== HERO SECTION ===== */
 .hero {
-    background: linear-gradient(to right, #00ffff, #1e293b);
+    background: linear-gradient(to right, #1fd1a5, #0aa6c7);
     color: #fff;
     padding: 100px 0;
     text-align: center;
@@ -161,7 +161,7 @@ a {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
-  border: 1px solid #234892;
+  border: 1px solid #1fd1a5;
 
   box-shadow: 0 15px 30px rgba(188, 14, 14, 0.15);
 
@@ -196,7 +196,7 @@ a {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(168, 15, 15, 0.15) ;
-    border: 1px solid #234892;
+    border: 1px solid #1fd1a5;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .value:hover {
@@ -206,7 +206,7 @@ a {
 
 /* ===== CTA ===== */
 .cta {
-    background: #0f172a;
+    background:linear-gradient(to right,#1fd1a5, #0aa6c7);
     color: #fff;
     text-align: center;
     padding: 70px 0;
@@ -218,7 +218,7 @@ a {
 
 /* ===== FOOTER ===== */
 .footer {
-    background: #020617;
+    background:linear-gradient(to right,#1fd1a5, #0aa6c7);
     color: #cbd5f5;
     text-align: center;
     padding: 20px 0;
