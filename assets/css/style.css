@@ -72,7 +72,7 @@ a {
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 25px;
 }
 
@@ -253,7 +253,7 @@ a {
 }
 
     .hero h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
 /* ===== FADE IN ANIMATION ===== */
 @keyframes fadeIn {
@@ -475,7 +475,7 @@ a {
 
 /* ===== FOOTER SPACING FIX ===== */
 .footer {
-    margin-top: 80px;
+    margin-top: 120px;
 }
 /* ===== ABOUT PAGE FIX ===== */
 
