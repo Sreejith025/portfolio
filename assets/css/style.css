@@ -374,7 +374,7 @@ a {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border: 2px solid #38bdf8;
+    border: 2px solid #1fd1a5;
     box-shadow: 0 0 8px rgba(56,189,248,0.4);
 }
 /* ===== PORTFOLIO ===== */
