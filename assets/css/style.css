@@ -217,7 +217,7 @@ a {
   max-width: 1100px;
   max-height: 260px;
 
-  margin: 50px auto 20px;
+  margin: 25px auto 10px;
 
   display: flex;
   flex-direction: column;
@@ -232,7 +232,8 @@ a {
     background:linear-gradient(to right,#1fd1a5, #0aa6c7);
     color: #cbd5f5;
     text-align: center;
-    padding: 20px 5px;
+    padding: 20px 0;
+    margin-top: 0;
     font-size: 14px;
 }
 
@@ -316,6 +317,15 @@ a {
     margin: 25px 12px;   
     padding: 30px 14px; 
     max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .cta {
+    margin-bottom: 8px;   
+  }
+
+  .footer {
+    padding-top: 10px;
   }
 }
 
