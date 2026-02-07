@@ -657,7 +657,7 @@ body.thankyou-page {
   position: fixed;
   bottom: 90px;        
   right: 20px;
-  background: #25d366;
+  background: linear-gradient(to right,#1fd1a5,#0aa6c7);
   color: #fff;
   padding: 14px 20px;
   border-radius: 30px;
