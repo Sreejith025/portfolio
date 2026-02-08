@@ -1,11 +1,11 @@
-/* ===== RESET ===== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== BASE STYLES ===== */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -24,7 +24,7 @@ a {
     margin: auto;
 }
 
-/* ===== HEADER / NAVBAR ===== */
+
 .header {
     background: linear-gradient(to right,#1fd1a5, #0aa6c7);
     padding: 15px 0;
@@ -58,7 +58,7 @@ a {
     color: #facbd0;
 }
 
-/* ===== HERO SECTION ===== */
+
 .hero {
     background: linear-gradient(to right, #1fd1a5, #0aa6c7);
     color: #fff;
@@ -76,7 +76,7 @@ a {
     margin-bottom: 25px;
 }
 
-/* ===== BUTTONS ===== */
+
 .btn {
     display: inline-block;
     background: #b4f5f0;
@@ -105,7 +105,7 @@ a {
     color: #000;
 }
 
-/* ===== PAGE BANNER ===== */
+
 .page-banner {
     background: #f1f5f9;
     text-align: center;
@@ -117,7 +117,7 @@ a {
     margin-bottom: 10px;
 }
 
-/* ===== ABOUT SECTIONS ===== */
+
 .about,
 .about-page {
     padding: 80px 0;
@@ -139,7 +139,7 @@ a {
     margin-bottom: 15px;
 }
 
-/* ===== SERVICES ===== */
+
 .services {
     background: #f8fafc;
     padding: 80px 0;
@@ -178,7 +178,7 @@ a {
     margin-bottom: 10px;
 }
 
-/* ===== VALUES ===== */
+
 .values {
     padding: 80px 0;
     text-align: center;
@@ -204,7 +204,7 @@ a {
   box-shadow: 0 20px 40px rgba(0,0,0,0.10);
 }
 
-/* ===== CTA ===== */
+
 .cta {
   background: linear-gradient(to right, #c5c5c5, #e2dede);
   color: #fff;
@@ -227,7 +227,7 @@ a {
     margin-bottom: 20px;
 }
 
-/* ===== FOOTER ===== */
+
 .footer {
     background:linear-gradient(to right,#1fd1a5, #0aa6c7);
     color: #cbd5f5;
@@ -237,7 +237,7 @@ a {
     font-size: 14px;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
   .header .container {
     flex-direction: row;
@@ -258,7 +258,7 @@ a {
     font-size: 14px;
   }
 
-  /* optional: hide scrollbar */
+  
   .navbar::-webkit-scrollbar {
     display: none;
   }
@@ -267,7 +267,7 @@ a {
     .hero h2 {
         font-size: 26px;
     }
-/* ===== FADE IN ANIMATION ===== */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -279,7 +279,7 @@ a {
     }
 }
 
-/* ===== SLIDE IN FROM LEFT ===== */
+
 @keyframes slideLeft {
     from {
         opacity: 0;
@@ -291,7 +291,7 @@ a {
     }
 }
 
-/* ===== SLIDE IN FROM RIGHT ===== */
+
 @keyframes slideRight {
     from {
         opacity: 0;
@@ -329,7 +329,7 @@ a {
   }
 }
 
-/* ===== HERO ANIMATION ===== */
+
 .hero h2 {
     animation: fadeIn 1s ease forwards;
 }
@@ -342,7 +342,7 @@ a {
     animation: fadeIn 1.6s ease forwards;
 }
 
-/* ===== SECTION ANIMATION ===== */
+
 .about,
 .services,
 .values,
@@ -351,7 +351,7 @@ a {
     animation: fadeIn 1s ease forwards;
 }
 
-/* ===== SERVICE CARDS HOVER EFFECT ===== */
+
 .service {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -361,7 +361,7 @@ a {
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* ===== BUTTON HOVER GLOW ===== */
+
 .btn {
     position: relative;
     overflow: hidden;
@@ -382,7 +382,7 @@ a {
     left: 100%;
 }
 
-/* ===== NAVBAR LINK UNDERLINE ===== */
+
 .navbar a {
     position: relative;
 }
@@ -403,7 +403,7 @@ a {
     width: 100%;
 }
 
-/* ===== INPUT FOCUS ANIMATION ===== */
+
 .contact-form input,
 .contact-form textarea {
     transition: border 0.3s, box-shadow 0.3s;
@@ -415,7 +415,7 @@ a {
     border: 2px solid #1fd1a5;
     box-shadow: 0 0 8px rgba(56,189,248,0.4);
 }
-/* ===== PORTFOLIO ===== */
+
 .portfolio {
     padding: 80px 0;
 }
@@ -460,10 +460,10 @@ a {
 .portfolio-item:hover .portfolio-info {
     opacity: 1;
 }
-/* ===== CONTACT PAGE FIX ===== */
+
 .contact {
     padding: 80px 0;
-    background: #f8fafc;   /* remove pink issue */
+    background: #f8fafc;   
     text-align: center;
 }
 
@@ -477,7 +477,7 @@ a {
     margin-bottom: 30px;
 }
 
-/* ===== CONTACT FORM CARD ===== */
+
 .contact-form {
     max-width: 500px;
     margin: auto;
@@ -511,15 +511,15 @@ a {
     cursor: pointer;
 }
 
-/* ===== FOOTER SPACING FIX ===== */
+
 .footer {
     margin-top: 120px;
 }
-/* ===== ABOUT PAGE FIX ===== */
 
-/* Main about text section */
+
+
 .about-page {
-    background: #f8fafc;     /* light clean background */
+    background: #f8fafc;     
     padding: 80px 0;
     text-align: center;
 }
@@ -537,9 +537,9 @@ a {
     line-height: 1.7;
 }
 
-/* WHY CHOOSE SECTION */
+
 .values {
-    background: #ffffff;     /* separate section */
+    background: #ffffff;    
     padding: 90px 0;
     text-align: center;
 }
@@ -549,7 +549,7 @@ a {
     margin-bottom: 40px;
 }
 
-/* Cards layout */
+
 .value-box {
     max-width: 1100px;
     margin: auto;
@@ -558,7 +558,7 @@ a {
     gap: 30px;
 }
 
-/* Individual card */
+
 .value {
     background: #f1f5f9;
     padding: 30px;
@@ -572,13 +572,11 @@ a {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* CTA spacing fix */
+
 .cta {
     margin-top: 0;
 }
-/* ============================= */
-/* THANK YOU PAGE STYLES */
-/* ============================= */
+
 
 body.thankyou-page {
   min-height: 100vh;
@@ -670,4 +668,38 @@ body.thankyou-page {
 .whatsapp-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+#backToTop {
+  position: fixed;
+  bottom: 90px; 
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(to right, #1fd1a5, #0aa6c7);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 999;
+}
+
+#backToTop:hover {
+  transform: translateY(-4px);
+}
+
+
+#backToTop {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  #backToTop {
+    display: block;
+  }
 }
