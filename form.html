@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Report</title>
+</head>
+<body>
+
+<h2>Service & Maintenance Report</h2>
+
+<h3>1. Project Overview</h3>
+<form>
+  Customer Name: <input type="text"><br><br>
+  Report Date: <input type="date"><br><br>
+  Site Location: <input type="text"><br><br>
+  Service Type:
+  <select>
+    <option>PM</option>
+    <option>AMC</option>
+    <option>Breakdown</option>
+  </select><br><br>
+  Contact Person: <input type="text"><br><br>
+  Technician: <input type="text"><br><br>
+
+<h3>2. Equipment Identification</h3>
+  Machine Name: <input type="text"><br><br>
+  Make/Model: <input type="text"><br><br>
+  Serial Number: <input type="text"><br><br>
+  PLC/VFD Model: <input type="text"><br><br>
+
+<h3>3. Technical Checklist</h3>
+
+<table border="1">
+  <tr>
+    <th>Parameter</th>
+    <th>Reading</th>
+    <th>Status</th>
+    <th>Remarks</th>
+  </tr>
+  <tr>
+    <td>Incoming Voltage</td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option>OK</option>
+        <option>Fail</option>
+      </select>
+    </td>
+    <td><input type="text"></td>
+  </tr>
+  <tr>
+    <td>Control Voltage</td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option>OK</option>
+        <option>Fail</option>
+      </select>
+    </td>
+    <td><input type="text"></td>
+  </tr>
+  <tr>
+    <td>Motor Load</td>
+    <td><input type="text"></td>
+    <td>
+      <select>
+        <option>OK</option>
+        <option>Fail</option>
+      </select>
+    </td>
+    <td><input type="text"></td>
+  </tr>
+</table>
+
+<h3>4. Work Description</h3>
+Description:<br>
+<textarea rows="4" cols="50"></textarea><br><br>
+
+Parts Replaced:<br>
+<textarea rows="3" cols="50"></textarea><br><br>
+
+<h3>5. Final Status</h3>
+<input type="checkbox"> Machine OK<br>
+<input type="checkbox"> Follow-up Required<br>
+<input type="checkbox"> Critical Alert<br><br>
+
+Recommendation:<br>
+<textarea rows="3" cols="50"></textarea><br><br>
+
+<h3>6. Authorization</h3>
+Technician Signature: <input type="text"><br><br>
+Customer Signature: <input type="text"><br><br>
+
+<input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
