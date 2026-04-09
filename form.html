@@ -1,98 +1,182 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Service Report</title>
+    <title>Service Report</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
+    <div class="report-wrapper">
+        <div class="report-header">
+            <h2>Service & Maintenance Report</h2>
+            <p>Please fill out the details accurately.</p>
+        </div>
 
-<h2>Service & Maintenance Report</h2>
+        <form class="report-form">
+            <!-- 1. Project Overview -->
+            <fieldset class="form-section">
+                <legend>1. Project Overview</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" placeholder="Enter customer name">
+                    </div>
+                    <div class="form-group">
+                        <label>Report Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Site Location</label>
+                        <input type="text" placeholder="Enter site location">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Type</label>
+                        <select>
+                            <option>PM</option>
+                            <option>AMC</option>
+                            <option>Breakdown</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Person</label>
+                        <input type="text" placeholder="Enter contact person">
+                    </div>
+                    <div class="form-group">
+                        <label>Technician</label>
+                        <input type="text" placeholder="Enter technician name">
+                    </div>
+                </div>
+            </fieldset>
 
-<h3>1. Project Overview</h3>
-<form>
-  Customer Name: <input type="text"><br><br>
-  Report Date: <input type="date"><br><br>
-  Site Location: <input type="text"><br><br>
-  Service Type:
-  <select>
-    <option>PM</option>
-    <option>AMC</option>
-    <option>Breakdown</option>
-  </select><br><br>
-  Contact Person: <input type="text"><br><br>
-  Technician: <input type="text"><br><br>
+            <!-- 2. Equipment Identification -->
+            <fieldset class="form-section">
+                <legend>2. Equipment Identification</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Machine Name</label>
+                        <input type="text" placeholder="Enter machine name">
+                    </div>
+                    <div class="form-group">
+                        <label>Make/Model</label>
+                        <input type="text" placeholder="Enter make/model">
+                    </div>
+                    <div class="form-group">
+                        <label>Serial Number</label>
+                        <input type="text" placeholder="Enter serial number">
+                    </div>
+                    <div class="form-group">
+                        <label>PLC/VFD Model</label>
+                        <input type="text" placeholder="Enter model">
+                    </div>
+                </div>
+            </fieldset>
 
-<h3>2. Equipment Identification</h3>
-  Machine Name: <input type="text"><br><br>
-  Make/Model: <input type="text"><br><br>
-  Serial Number: <input type="text"><br><br>
-  PLC/VFD Model: <input type="text"><br><br>
+            <!-- 3. Technical Checklist -->
+            <fieldset class="form-section">
+                <legend>3. Technical Checklist</legend>
+                <div class="table-responsive">
+                    <table class="checklist-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Reading</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Incoming Voltage</td>
+                                <td><input type="text" placeholder="Value"></td>
+                                <td>
+                                    <select>
+                                        <option>OK</option>
+                                        <option>Fail</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" placeholder="Remarks"></td>
+                            </tr>
+                            <tr>
+                                <td>Control Voltage</td>
+                                <td><input type="text" placeholder="Value"></td>
+                                <td>
+                                    <select>
+                                        <option>OK</option>
+                                        <option>Fail</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" placeholder="Remarks"></td>
+                            </tr>
+                            <tr>
+                                <td>Motor Load</td>
+                                <td><input type="text" placeholder="Value"></td>
+                                <td>
+                                    <select>
+                                        <option>OK</option>
+                                        <option>Fail</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" placeholder="Remarks"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
 
-<h3>3. Technical Checklist</h3>
+            <!-- 4. Work Description -->
+            <fieldset class="form-section">
+                <legend>4. Work Description</legend>
+                <div class="form-group mt-3">
+                    <label>Description</label>
+                    <textarea rows="4" placeholder="Briefly describe the work done..."></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <label>Parts Replaced</label>
+                    <textarea rows="3" placeholder="List any replaced parts..."></textarea>
+                </div>
+            </fieldset>
 
-<table border="1">
-  <tr>
-    <th>Parameter</th>
-    <th>Reading</th>
-    <th>Status</th>
-    <th>Remarks</th>
-  </tr>
-  <tr>
-    <td>Incoming Voltage</td>
-    <td><input type="text"></td>
-    <td>
-      <select>
-        <option>OK</option>
-        <option>Fail</option>
-      </select>
-    </td>
-    <td><input type="text"></td>
-  </tr>
-  <tr>
-    <td>Control Voltage</td>
-    <td><input type="text"></td>
-    <td>
-      <select>
-        <option>OK</option>
-        <option>Fail</option>
-      </select>
-    </td>
-    <td><input type="text"></td>
-  </tr>
-  <tr>
-    <td>Motor Load</td>
-    <td><input type="text"></td>
-    <td>
-      <select>
-        <option>OK</option>
-        <option>Fail</option>
-      </select>
-    </td>
-    <td><input type="text"></td>
-  </tr>
-</table>
+            <!-- 5. Final Status -->
+            <fieldset class="form-section">
+                <legend>5. Final Status</legend>
+                <div class="checkbox-group mt-3">
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Machine OK
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Follow-up Required
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Critical Alert
+                    </label>
+                </div>
+                <div class="form-group mt-3">
+                    <label>Recommendation</label>
+                    <textarea rows="3" placeholder="Any final recommendations..."></textarea>
+                </div>
+            </fieldset>
 
-<h3>4. Work Description</h3>
-Description:<br>
-<textarea rows="4" cols="50"></textarea><br><br>
+            <!-- 6. Authorization -->
+            <fieldset class="form-section">
+                <legend>6. Authorization</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Technician Signature</label>
+                        <input type="text" placeholder="Sign here">
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Signature</label>
+                        <input type="text" placeholder="Sign here">
+                    </div>
+                </div>
+            </fieldset>
 
-Parts Replaced:<br>
-<textarea rows="3" cols="50"></textarea><br><br>
-
-<h3>5. Final Status</h3>
-<input type="checkbox"> Machine OK<br>
-<input type="checkbox"> Follow-up Required<br>
-<input type="checkbox"> Critical Alert<br><br>
-
-Recommendation:<br>
-<textarea rows="3" cols="50"></textarea><br><br>
-
-<h3>6. Authorization</h3>
-Technician Signature: <input type="text"><br><br>
-Customer Signature: <input type="text"><br><br>
-
-<input type="submit" value="Submit">
-
-</form>
-
+            <div class="form-actions">
+                <button type="submit" class="submit-btn" onclick="event.preventDefault()">Submit Report</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
