@@ -13,6 +13,28 @@ document.addEventListener("DOMContentLoaded", () => {
             const techSignature = techCanvas ? techCanvas.toDataURL("image/png") : "";
             const custSignature = custCanvas ? custCanvas.toDataURL("image/png") : "";
 
+            // Helper function to convert file to Base64
+            const fileToBase64 = (file) => new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+
+            // Process attachments
+            const attachments = [];
+            for (let i = 1; i <= 4; i++) {
+                const fileInput = document.getElementById(`attachment${i}`);
+                if (fileInput && fileInput.files.length > 0) {
+                    try {
+                        const base64String = await fileToBase64(fileInput.files[0]);
+                        attachments.push(base64String);
+                    } catch (error) {
+                        console.error(`Error converting attachment ${i}:`, error);
+                    }
+                }
+            }
+
             // Gather Form Data
             const reportData = {
                 customerName: document.getElementById("customerName")?.value || "",
@@ -63,7 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 
                 technicianSignature: techSignature,
-                customerSignature: custSignature
+                customerSignature: custSignature,
+                attachments: attachments
             };
 
             // Disable button and show loading state

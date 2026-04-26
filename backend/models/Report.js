@@ -38,6 +38,7 @@ const reportSchema = new mongoose.Schema({
 
     technicianSignature: String,
     customerSignature: String,
+    attachments: [String],
 
     createdAt: {
         type: Date,
