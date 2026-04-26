@@ -109,7 +109,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     }
   };
 
-  const res = await fetch("http://localhost:5000/api/reports/submit", {
+  const res = await fetch("https://portfolio-132f.onrender.com/api/reports/submit", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -129,7 +129,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     technician: document.querySelector("input[name='technician']").value
   };
 
-  const res = await fetch("http://localhost:5000/api/reports", {
+  const res = await fetch("https://portfolio-132f.onrender.com/api/reports", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

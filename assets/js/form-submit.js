@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 const token = localStorage.getItem("token");
-                const response = await fetch("http://localhost:5000/api/reports/submit", {
+                const response = await fetch("https://portfolio-132f.onrender.com/api/reports/submit", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
