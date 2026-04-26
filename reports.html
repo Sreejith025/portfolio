@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report List - SimpleVolt Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Unauthorized! Please login.");
+            window.location.href = "admin.html";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="admin-dashboard">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <ul class="sidebar-nav">
+                <li><a href="form.html"><span class="icon">➕</span> Add Report</a></li>
+                <li class="active"><a href="reports.html"><span class="icon">📋</span> Report List</a></li>
+                <li><a href="#"><span class="icon">⚙️</span> Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="report-wrapper" style="max-width: 100%;">
+                <div class="report-header">
+                    <h2>Submitted Reports</h2>
+                    <p>View and manage all service reports.</p>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="checklist-table" id="reportsTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Customer Name</th>
+                                <th>Location</th>
+                                <th>Service Type</th>
+                                <th>Technician</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 20px;">Loading reports...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/report-list.js"></script>
+</body>
+
+</html>

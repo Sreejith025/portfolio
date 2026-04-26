@@ -1,3 +1,11 @@
+window.addEventListener('load', () => {
+  const loaderWrapper = document.getElementById('loader-wrapper');
+  if (loaderWrapper) {
+    setTimeout(() => {
+      loaderWrapper.classList.add('hidden');
+    }, 3500); // 1.5 second artificial delay for the animation to show (user wanted loading page like this)
+  }
+});
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
@@ -75,3 +83,62 @@ navLinkElements.forEach(link => {
     navLinksContainer.classList.remove("active");
   });
 });
+
+document.addEventListener("click", (e) => {
+  if (!menuBtn.contains(e.target) && !navLinksContainer.contains(e.target)) {
+    navLinksContainer.classList.remove("active");
+    menuBtn.classList.remove("active");
+  }
+});
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    customerName: document.querySelector("[name='customerName']").value,
+    reportDate: document.querySelector("[name='reportDate']").value,
+    siteLocation: document.querySelector("[name='siteLocation']").value,
+    serviceType: document.querySelector("[name='serviceType']").value,
+    contactPerson: document.querySelector("[name='contactPerson']").value,
+    technician: document.querySelector("[name='technician']").value,
+
+    equipment: {
+      machineName: document.querySelector("[name='machineName']").value,
+      makeModel: document.querySelector("[name='makeModel']").value,
+      serialNumber: document.querySelector("[name='serialNumber']").value,
+      plcModel: document.querySelector("[name='plcModel']").value
+    }
+  };
+
+  const res = await fetch("http://localhost:5000/api/reports/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+  alert(result.message);
+});
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    customerName: document.querySelector("input[name='customer']").value,
+    siteLocation: document.querySelector("input[name='location']").value,
+    technician: document.querySelector("input[name='technician']").value
+  };
+
+  const res = await fetch("http://localhost:5000/api/reports", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+  console.log(result);
+  alert("Report saved!");
+});
+
