@@ -62,9 +62,12 @@
     <div id="reportModal" class="modal">
         <div class="modal-content report-wrapper">
             <span class="close-modal">&times;</span>
-            <div class="report-header">
-                <h2>Service Report Details</h2>
-                <p id="modalDate"></p>
+            <div class="report-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="text-align: left;">
+                    <h2>Service Report Details</h2>
+                    <p id="modalDate"></p>
+                </div>
+                <button id="downloadModalBtn" class="btn-primary" style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Download PDF</button>
             </div>
             <div id="modalBody" class="modal-body">
                 <!-- Content will be injected here -->
@@ -72,6 +75,7 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="assets/js/report-list.js"></script>
 </body>
 

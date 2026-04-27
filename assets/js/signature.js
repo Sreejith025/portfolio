@@ -12,18 +12,41 @@ function initSignaturePad(canvasId) {
     ctx.lineCap = 'round';
     ctx.strokeStyle = '#000';
 
+    let lastWidth = 0;
+
     // Resize canvas to fit its container
     function resizeCanvas() {
         const ratio = Math.max(window.devicePixelRatio || 1, 1);
         const rect = canvas.parentElement.getBoundingClientRect();
+        
+        // Prevent unnecessary resize on mobile (e.g. scroll triggering address bar hide)
+        if (Math.abs(rect.width - lastWidth) < 1) return;
+        lastWidth = rect.width;
+
+        // Save existing drawing using a temporary canvas (synchronous)
+        let tempCanvas = null;
+        if (canvas.width > 0 && canvas.height > 0) {
+            tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            tempCanvas.getContext('2d').drawImage(canvas, 0, 0);
+        }
+
         canvas.width = rect.width * ratio;
         canvas.height = 150 * ratio; // Fixed height of 150px
         canvas.style.width = rect.width + 'px';
         canvas.style.height = '150px';
         ctx.scale(ratio, ratio);
         
-        // Clear when resized to avoid stretching existing drawings incorrectly
-        // clearSignature(canvasId);
+        // Context state is reset when width/height changes, so we must restore styles
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#000';
+
+        // Restore drawing
+        if (tempCanvas) {
+            ctx.drawImage(tempCanvas, 0, 0, tempCanvas.width / ratio, tempCanvas.height / ratio);
+        }
     }
 
     window.addEventListener('resize', resizeCanvas);

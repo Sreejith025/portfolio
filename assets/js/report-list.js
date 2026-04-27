@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         tbody.innerHTML = reports.map(report => {
             const date = report.reportDate ? new Date(report.reportDate).toLocaleDateString() : new Date(report.createdAt).toLocaleDateString();
-            
+
             // Derive some status text
             let status = "Pending";
             let statusClass = "pending";
@@ -52,7 +52,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <td>${report.technician || "-"}</td>
                     <td><span class="status-badge ${statusClass}">${status}</span></td>
                     <td>
-                        <button class="btn-clear" onclick="viewReport('${report._id}')" style="font-size: 12px; padding: 4px 8px;">View</button>
+                        <div style="display: flex; gap: 5px;">
+                            <button class="btn-clear" onclick="viewReport('${report._id}')" style="font-size: 12px; padding: 4px 8px;">View</button>
+                            <button class="btn-primary" onclick="downloadReport('${report._id}')" style="font-size: 12px; padding: 4px 8px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Download</button>
+                        </div>
                     </td>
                 </tr>
             `;
@@ -63,24 +66,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-function viewReport(id) {
-    const report = window.allReports.find(r => r._id === id);
-    if (!report) return;
-
-    const modal = document.getElementById('reportModal');
-    const modalBody = document.getElementById('modalBody');
-    const modalDate = document.getElementById('modalDate');
-
-    const date = report.reportDate ? new Date(report.reportDate).toLocaleDateString() : new Date(report.createdAt).toLocaleDateString();
-    modalDate.textContent = `Report Date: ${date}`;
-
+function generateReportHTML(report) {
     let attachmentsHtml = '';
     if (report.attachments && report.attachments.length > 0) {
         attachmentsHtml = `
             <div class="form-section" style="margin-top: 20px;">
                 <h3 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Attachments</h3>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    ${report.attachments.map(att => `<img src="${att}" style="max-width: 200px; max-height: 200px; object-fit: contain; border: 1px solid #ddd; border-radius: 5px; padding: 5px; background: #fff;" />`).join('')}
+                    ${report.attachments.map(att => `<img src="${att}" style="max-width: 200px; max-height: 200px; object-fit: contain; border: 1px solid #ddd; border-radius: 5px; padding: 5px; background: #fff;" crossorigin="anonymous" />`).join('')}
                 </div>
             </div>
         `;
@@ -90,13 +83,13 @@ function viewReport(id) {
         <div class="form-section" style="margin-top: 20px;">
             <h3 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Signatures</h3>
             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                ${report.technicianSignature ? `<div><p><strong>Technician:</strong></p><img src="${report.technicianSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" /></div>` : '<div><p>No Technician Signature</p></div>'}
-                ${report.customerSignature ? `<div><p><strong>Customer:</strong></p><img src="${report.customerSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" /></div>` : '<div><p>No Customer Signature</p></div>'}
+                ${report.technicianSignature ? `<div><p><strong>Technician:</strong></p><img src="${report.technicianSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" crossorigin="anonymous" /></div>` : '<div><p>No Technician Signature</p></div>'}
+                ${report.customerSignature ? `<div><p><strong>Customer:</strong></p><img src="${report.customerSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" crossorigin="anonymous" /></div>` : '<div><p>No Customer Signature</p></div>'}
             </div>
         </div>
     `;
 
-    modalBody.innerHTML = `
+    return `
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
             <div><strong>Customer Name:</strong> ${report.customerName || "-"}</div>
             <div><strong>Site Location:</strong> ${report.siteLocation || "-"}</div>
@@ -148,9 +141,29 @@ function viewReport(id) {
         ${signaturesHtml}
         ${attachmentsHtml}
     `;
+}
+
+window.viewReport = function(id) {
+    const report = window.allReports.find(r => r._id === id);
+    if (!report) return;
+
+    const modal = document.getElementById('reportModal');
+    const modalBody = document.getElementById('modalBody');
+    const modalDate = document.getElementById('modalDate');
+
+    const date = report.reportDate ? new Date(report.reportDate).toLocaleDateString() : new Date(report.createdAt).toLocaleDateString();
+    modalDate.textContent = `Report Date: ${date}`;
+
+    modalBody.innerHTML = generateReportHTML(report);
+
+    // Set up download button in modal
+    const downloadBtn = document.getElementById('downloadModalBtn');
+    if (downloadBtn) {
+        downloadBtn.onclick = () => window.downloadReport(id);
+    }
 
     modal.style.display = "block";
-}
+};
 
 // Close modal logic
 document.addEventListener("DOMContentLoaded", () => {
@@ -158,13 +171,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector('.close-modal');
 
     if (closeBtn && modal) {
-        closeBtn.onclick = function() {
+        closeBtn.onclick = function () {
             modal.style.display = "none";
-        }
-        window.onclick = function(event) {
+        };
+        window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
+        };
     }
 });
+
+window.downloadReport = function(id) {
+    const report = window.allReports.find(r => r._id === id);
+    if (!report) return;
+
+    // Show a loading state or indicate downloading
+    const date = report.reportDate ? new Date(report.reportDate).toLocaleDateString() : new Date(report.createdAt).toLocaleDateString();
+
+    const container = document.createElement('div');
+    container.style.padding = '20px';
+    container.style.fontFamily = 'Arial, sans-serif';
+    container.style.color = '#333';
+    container.innerHTML = `
+        <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #0056b3; padding-bottom: 10px;">
+            <h1 style="color: #0056b3; margin: 0;">SimpleVolt Service Report</h1>
+            <p style="margin: 5px 0 0 0; color: #555;">Date: ${date}</p>
+        </div>
+        ${generateReportHTML(report)}
+    `;
+
+    const opt = {
+        margin: 0.5,
+        filename: `Service_Report_${report.customerName?.replace(/\s+/g, '_') || 'Unknown'}_${date.replace(/\//g, '-')}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(container).save();
+};
