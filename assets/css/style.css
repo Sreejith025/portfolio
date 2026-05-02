@@ -143,105 +143,227 @@ a {
   align-items: center;
 }
 
-.circle {
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
-  border: 2px solid #1fd160;
+.circle-wrapper {
+  position: relative;
+  width: 450px;
+  height: 450px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-right: 55px;
+}
+
+.dashed-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2.5px dashed #cbd5e1;
+  z-index: 0;
+}
+
+.dashed-circle .dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.dashed-circle .d-1 {
+  top: 20%;
+  left: 7%;
+  background: #60a5fa;
+}
+
+.dashed-circle .d-2 {
+  top: 20%;
+  right: 7%;
+  background: #fbbf24;
+}
+
+.dashed-circle .d-3 {
+  bottom: 20%;
+  left: 7%;
+  background: #a78bfa;
+}
+
+.dashed-circle .d-4 {
+  bottom: 20%;
+  right: 7%;
+  background: #34d399;
+}
+
+.circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 4px solid #10b981;
+  display: flex;
+  justify-content: center;
   align-items: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 2;
+  background: white;
+  padding: 8px;
 }
 
 .circle img {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
 
+.icon-bg {
+  background: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-size: 20px;
+}
 
 .float-icon {
   position: absolute;
-  font-size: 30px;
-  opacity: 0.6;
-  animation: float-icon-anim 5s ease-in-out infinite alternate;
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
 }
 
 .float-1 {
-  top: -10%;
-  left: 40%;
-  font-size: clamp(20px, 3vw, 30px);
+  top: 0%;
+  left: 50%;
   animation-delay: 0s;
 }
 
 .float-2 {
-  top: -10%;
-  left: 79%;
-  font-size: clamp(25px, 4vw, 40px);
+  top: 9.5%;
+  left: 79.4%;
   animation-delay: 0.5s;
 }
 
 .float-3 {
-  top: 12%;
-  left: 110%;
-  font-size: clamp(18px, 2.5vw, 25px);
+  top: 34.5%;
+  left: 97.5%;
   animation-delay: 1s;
 }
 
 .float-4 {
-  top: 50%;
-  left: 124%;
-  font-size: clamp(22px, 3.5vw, 35px);
+  top: 65.5%;
+  left: 97.5%;
   animation-delay: 1.5s;
 }
 
 .float-5 {
-  top: 87%;
-  left: 110%;
-  font-size: clamp(20px, 3vw, 30px);
+  top: 90.5%;
+  left: 79.4%;
   animation-delay: 2s;
 }
 
 .float-6 {
-  top: 110%;
-  left: 79%;
-  font-size: clamp(18px, 2.8vw, 28px);
+  top: 100%;
+  left: 50%;
   animation-delay: 2.5s;
 }
 
 .float-7 {
-  top: 115%;
-  left: 40%;
-  font-size: clamp(22px, 3.2vw, 32px);
+  top: 90.5%;
+  left: 20.6%;
   animation-delay: 3s;
 }
 
 .float-8 {
-  top: 87%;
-  left: -4%;
-  font-size: clamp(18px, 2.5vw, 25px);
+  top: 65.5%;
+  left: 2.5%;
   animation-delay: 3.5s;
 }
 
 .float-9 {
-  top: 50%;
-  left: -24%;
-  font-size: clamp(24px, 3.8vw, 38px);
+  top: 34.5%;
+  left: 2.5%;
   animation-delay: 4s;
 }
 
 .float-10 {
-  top: 12%;
-  left: -4%;
-  font-size: clamp(20px, 3vw, 30px);
+  top: 9.5%;
+  left: 20.6%;
   animation-delay: 4.5s;
+}
+
+.bg-dots {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+  background-size: 15px 15px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.hero-ring {
+  position: absolute;
+  top: -100px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 45px solid rgba(16, 185, 129, 0.12);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-ring-bottom {
+  position: absolute;
+  bottom: -150px;
+  right: -100px;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: 45px solid rgba(139, 92, 246, 0.12);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-dots.top-left {
+  top: 10%;
+  left: 5%;
+}
+
+.bg-dots.right-middle {
+  top: 50%;
+  right: 5%;
+}
+
+.hero-separator {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 15px 0 20px;
+  gap: 15px;
+}
+
+.hero-separator .line {
+  height: 2px;
+  width: 40px;
+  border-radius: 2px;
+}
+
+.hero-separator .line-left {
+  background: #10b981;
+}
+
+.hero-separator .line-right {
+  background: #94a3b8;
+}
+
+.hero-separator .bolt {
+  font-size: 16px;
+  color: #fbbf24;
 }
 
 @keyframes float-icon-anim {
@@ -367,11 +489,60 @@ a {
     box-sizing: border-box;
   }
 
-  .circle {
-    width: 280px;
-    height: 280px;
+  .circle-wrapper {
+    width: 320px;
+    height: 320px;
     margin: 0 auto;
+  }
 
+  .circle {
+    width: 220px;
+    height: 220px;
+    padding: 6px;
+  }
+
+  .icon-bg {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .hero-separator {
+    justify-content: center;
+  }
+
+  .hero-buttons .btn {
+    border-radius: 50px;
+  }
+
+  .bg-dots {
+    opacity: 0.3;
+  }
+
+  .hero-ring {
+    width: 300px;
+    height: 300px;
+    border-width: 30px;
+    top: -80px;
+    left: -100px;
+  }
+
+  .hero-ring-bottom {
+    width: 250px;
+    height: 250px;
+    border-width: 25px;
+    bottom: -80px;
+    right: -80px;
+  }
+
+  .hero-buttons .btn.primary {
+    background: linear-gradient(90deg, #1d4ed8, #22c55e);
+  }
+
+  .hero-buttons .btn.secondary {
+    border: none;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -439,7 +610,7 @@ a {
 
 
 .services {
-  background: #f8fafc;
+  background: #fff;
   padding: 80px 0;
   text-align: center;
 }
@@ -456,10 +627,10 @@ a {
 }
 
 .service {
-  background: #f0fdf4;
+  background: #fff;
   padding: 30px;
   border-radius: 10px;
-  border: 2px solid #1fd1a5;
+  border: 2px solid #5a5a5a;
 
   box-shadow: 0 15px 30px rgba(188, 14, 14, 0.15);
 
@@ -506,7 +677,7 @@ a {
 
 .cta {
   background: #fff;
-  color: #31e950;
+  color: #5a5a5a;
   text-align: center;
 
   padding: 35px 20px;
@@ -800,10 +971,15 @@ a {
     margin: 0;
   }
 
-  .circle {
-    width: 180px;
-    height: 180px;
+  .circle-wrapper {
+    width: 300px;
+    height: 300px;
     margin: 0 auto;
+  }
+
+  .circle {
+    width: 190px;
+    height: 190px;
   }
 
   .hero-left {
@@ -1116,7 +1292,7 @@ a {
 
 
 .about-page {
-  background: #dcfce7;
+  background: #fff;
   padding: 80px 0;
   text-align: center;
 }
