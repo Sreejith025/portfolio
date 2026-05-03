@@ -1,9 +1,14 @@
 window.addEventListener('load', () => {
   const loaderWrapper = document.getElementById('loader-wrapper');
+  const floatingContact = document.getElementById('floatingContact');
+  
   if (loaderWrapper) {
     setTimeout(() => {
       loaderWrapper.classList.add('hidden');
+      if (floatingContact) floatingContact.classList.add('show');
     }, 3500); // 1.5 second artificial delay for the animation to show (user wanted loading page like this)
+  } else {
+    if (floatingContact) floatingContact.classList.add('show');
   }
 });
 
@@ -20,15 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const backToTop = document.getElementById("backToTop");
   if (!backToTop) return;
 
-  function isMobile() {
-    return window.innerWidth <= 768;
-  }
-
   window.addEventListener("scroll", () => {
-    if (isMobile() && window.scrollY > 300) {
-      backToTop.style.display = "block";
+    if (window.scrollY > 300) {
+      backToTop.classList.add("show");
     } else {
-      backToTop.style.display = "none";
+      backToTop.classList.remove("show");
     }
   });
 

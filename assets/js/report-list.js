@@ -72,19 +72,19 @@ function generateReportHTML(report) {
         attachmentsHtml = `
             <div class="form-section" style="margin-top: 20px;">
                 <h3 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Attachments</h3>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    ${report.attachments.map(att => `<img src="${att}" style="max-width: 200px; max-height: 200px; object-fit: contain; border: 1px solid #ddd; border-radius: 5px; padding: 5px; background: #fff;" crossorigin="anonymous" />`).join('')}
+                <div style="display: block; width: 100%;">
+                    ${report.attachments.map(att => `<div style="display: inline-block; vertical-align: top; margin-right: 10px; margin-bottom: 10px; page-break-inside: avoid; break-inside: avoid;"><img src="${att}" style="max-width: 200px; max-height: 200px; object-fit: contain; border: 1px solid #ddd; border-radius: 5px; padding: 5px; background: #fff;" crossorigin="anonymous" /></div>`).join('')}
                 </div>
             </div>
         `;
     }
 
     let signaturesHtml = `
-        <div class="form-section" style="margin-top: 20px;">
+        <div class="form-section" style="margin-top: 20px; page-break-inside: avoid; break-inside: avoid; display: inline-block; width: 100%;">
             <h3 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Signatures</h3>
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                ${report.technicianSignature ? `<div><p><strong>Technician:</strong></p><img src="${report.technicianSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" crossorigin="anonymous" /></div>` : '<div><p>No Technician Signature</p></div>'}
-                ${report.customerSignature ? `<div><p><strong>Customer:</strong></p><img src="${report.customerSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" crossorigin="anonymous" /></div>` : '<div><p>No Customer Signature</p></div>'}
+            <div style="display: block; width: 100%;">
+                ${report.technicianSignature ? `<div style="display: inline-block; vertical-align: top; margin-right: 20px; page-break-inside: avoid; break-inside: avoid;"><p><strong>Technician:</strong></p><img src="${report.technicianSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" crossorigin="anonymous" /></div>` : '<div style="display: inline-block; vertical-align: top; margin-right: 20px;"><p>No Technician Signature</p></div>'}
+                ${report.customerSignature ? `<div style="display: inline-block; vertical-align: top; margin-right: 20px; page-break-inside: avoid; break-inside: avoid;"><p><strong>Customer:</strong></p><img src="${report.customerSignature}" style="max-width: 200px; border: 1px solid #eee; background: #fafafa;" crossorigin="anonymous" /></div>` : '<div style="display: inline-block; vertical-align: top; margin-right: 20px;"><p>No Customer Signature</p></div>'}
             </div>
         </div>
     `;
@@ -121,7 +121,7 @@ function generateReportHTML(report) {
                 </thead>
                 <tbody>
                     ${(report.technicalChecklist || []).map(item => `
-                        <tr>
+                        <tr style="page-break-inside: avoid; break-inside: avoid;">
                             <td style="padding: 8px; border: 1px solid #ddd;">${item.parameter || "-"}</td>
                             <td style="padding: 8px; border: 1px solid #ddd;">${item.reading || "-"}</td>
                             <td style="padding: 8px; border: 1px solid #ddd;">${item.status || "-"}</td>
@@ -143,7 +143,7 @@ function generateReportHTML(report) {
     `;
 }
 
-window.viewReport = function(id) {
+window.viewReport = function (id) {
     const report = window.allReports.find(r => r._id === id);
     if (!report) return;
 
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-window.downloadReport = function(id) {
+window.downloadReport = function (id) {
     const report = window.allReports.find(r => r._id === id);
     if (!report) return;
 
@@ -206,7 +206,8 @@ window.downloadReport = function(id) {
         filename: `Service_Report_${report.customerName?.replace(/\s+/g, '_') || 'Unknown'}_${date.replace(/\//g, '-')}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
     };
 
     html2pdf().set(opt).from(container).save();
