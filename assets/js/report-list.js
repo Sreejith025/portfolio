@@ -89,6 +89,19 @@ function generateReportHTML(report) {
         </div>
     `;
 
+    let statusLabels = [];
+    if (report.finalStatus?.machineOK) statusLabels.push("Machine OK");
+    if (report.finalStatus?.followUp) statusLabels.push("Follow-up Required");
+    if (report.finalStatus?.criticalAlert) statusLabels.push("Critical Alert");
+    
+    let finalStatusHtml = `
+        <div class="form-section" style="margin-top: 20px; page-break-inside: avoid; break-inside: avoid;">
+            <h3 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Final Status & Recommendation</h3>
+            <p style="margin-bottom: 8px;"><strong>Status:</strong> ${statusLabels.length > 0 ? statusLabels.join(", ") : "-"}</p>
+            <p><strong>Recommendation:</strong> ${report.finalStatus?.recommendation || "-"}</p>
+        </div>
+    `;
+
     return `
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
             <div><strong>Customer Name:</strong> ${report.customerName || "-"}</div>
@@ -138,6 +151,7 @@ function generateReportHTML(report) {
             <p><strong>Parts Replaced:</strong> ${report.workDescription?.partsReplaced || "-"}</p>
         </div>
 
+        ${finalStatusHtml}
         ${signaturesHtml}
         ${attachmentsHtml}
     `;

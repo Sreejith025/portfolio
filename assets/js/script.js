@@ -91,56 +91,7 @@ document.addEventListener("click", (e) => {
     menuBtn.classList.remove("active");
   }
 });
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
 
-  const data = {
-    customerName: document.querySelector("[name='customerName']").value,
-    reportDate: document.querySelector("[name='reportDate']").value,
-    siteLocation: document.querySelector("[name='siteLocation']").value,
-    serviceType: document.querySelector("[name='serviceType']").value,
-    contactPerson: document.querySelector("[name='contactPerson']").value,
-    technician: document.querySelector("[name='technician']").value,
-
-    equipment: {
-      machineName: document.querySelector("[name='machineName']").value,
-      makeModel: document.querySelector("[name='makeModel']").value,
-      serialNumber: document.querySelector("[name='serialNumber']").value,
-      plcModel: document.querySelector("[name='plcModel']").value
-    }
-  };
-
-  const res = await fetch("https://portfolio-132f.onrender.com/api/reports/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
-
-  const result = await res.json();
-  alert(result.message);
-});
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const data = {
-    customerName: document.querySelector("input[name='customer']").value,
-    siteLocation: document.querySelector("input[name='location']").value,
-    technician: document.querySelector("input[name='technician']").value
-  };
-
-  const res = await fetch("https://portfolio-132f.onrender.com/api/reports", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
-
-  const result = await res.json();
-  console.log(result);
-});
 
 // FAQ Accordion Interaction
 document.querySelectorAll('.faq-question').forEach(button => {
