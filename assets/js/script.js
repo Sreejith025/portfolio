@@ -140,6 +140,21 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
   const result = await res.json();
   console.log(result);
-  alert("Report saved!");
 });
 
+// FAQ Accordion Interaction
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.parentElement;
+    
+    // Optional: Close other open items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item !== faqItem) {
+        item.classList.remove('active');
+      }
+    });
+    
+    // Toggle current item
+    faqItem.classList.toggle('active');
+  });
+});
